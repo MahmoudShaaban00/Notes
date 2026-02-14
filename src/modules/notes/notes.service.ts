@@ -19,7 +19,7 @@ export class NotesService {
 
    async deleteNote(id:string){
       let note =   await this.notesModel.findByIdAndDelete(id)
-        return {message:"Note deleted successfully" , note}
+        return {message:"Note deleted successfully" , note:note}
    }
 
    async updateNote(id:string,note:Notes){

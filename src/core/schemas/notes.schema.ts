@@ -7,7 +7,7 @@ export class Notes{
     title:string
     @Prop({required:true})
     description:string
-    @Prop({required:true,types:mongoose.Schema.Types.ObjectId, ref:'User'})
+    @Prop({required:true, type:mongoose.Schema.Types.ObjectId, ref:'User'})
     user:string
 }
 
