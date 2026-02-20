@@ -3,10 +3,11 @@ import { NotesService } from './notes.service';
 import { NotesController } from './notes.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { NotesSchema } from 'src/core/schemas/notes.schema';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [MongooseModule.forFeature([{name:"Notes",schema:NotesSchema}])],
-  providers: [NotesService],
+  providers: [NotesService , JwtService],
   controllers: [NotesController]
 })
 export class NotesModule {}

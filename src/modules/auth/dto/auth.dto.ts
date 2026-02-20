@@ -1,4 +1,4 @@
-import { isEmail, IsEmail, IsStrongPassword, MaxLength, MinLength } from 'class-validator';
+import { isEmail, IsEmail, IsMongoId, IsOptional, IsStrongPassword, MaxLength, MinLength } from 'class-validator';
 
 export class SignupDto {
     @MaxLength(50)
@@ -8,6 +8,9 @@ export class SignupDto {
     email: string;
     @IsStrongPassword()
     password: string;
+    @IsMongoId()
+    @IsOptional()
+    user: string;
 }
 
 export class SigninDto {

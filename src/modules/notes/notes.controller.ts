@@ -1,15 +1,20 @@
-import { Controller, Post, Body, Get, Delete, Param, Put} from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param, Put, UseGuards ,Req} from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { AddNoteDto, ParamIdDto, UpdateNoteDto } from './dto/notes.dto';
+import { AuthGuard } from 'src/core/guards/auth.guard';
 
 @Controller('notes')
+@UseGuards(AuthGuard)
 export class NotesController {
     constructor(private readonly _notesService:NotesService){}
 
     @Post()
-    AddNote(@Body() body:AddNoteDto){
-        return this._notesService.addNote(body)
-    }
+AddNote(@Body() body: AddNoteDto, @Req() req: any) {
+
+  const noteData = {...body, user: req.user.id };
+
+  return this._notesService.addNote(noteData);
+}
     @Get()
     GetAllNotes(){
         return this._notesService.getAllNotes()

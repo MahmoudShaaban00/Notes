@@ -8,6 +8,7 @@ export class AddNoteDto {
     @MinLength(3)
     description: string;
     @IsMongoId()
+    @IsOptional()
     user: string
 }
 
